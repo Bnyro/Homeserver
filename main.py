@@ -7,8 +7,8 @@ import json
 app = FastAPI()
 
 @app.get("/")
-def read_root():
-    return {"message": "Hello World"}
+def root():
+    return {"message": "API online"}
 
 @app.get("/weather/data")
 def getWeatherData():
