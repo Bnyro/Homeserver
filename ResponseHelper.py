@@ -55,6 +55,6 @@ def saveEvent(event: Event) -> dict:
 
 def deleteEvent(event: Event) -> dict:
     joinDataDir()
-    data = [item for item in getEvents() if item != event.dict()]
+    data = [item for item in getEvents() if item.id != event.id]
     writeJSON(eventsFile, data)
     return message.ok

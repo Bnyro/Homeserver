@@ -8,6 +8,7 @@ class WeatherData(BaseModel):
     bmp_p: float
 
 class Event(BaseModel):
+    id: float
     title: str
     start: str
     color: str
