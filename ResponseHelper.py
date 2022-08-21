@@ -1,5 +1,6 @@
 from models import WeatherData, Event
 from config import *
+import message
 import time
 import json
 import os
@@ -16,7 +17,7 @@ def getJSONFile(fileName: str):
         return json.load(f)
 
 def writeJSON(fileName: str, data):
-    with open(weatherFile, 'w') as outFile:
+    with open(fileName, 'w') as outFile:
         json.dump(
             data,
             outFile,
@@ -34,22 +35,26 @@ def writeWeatherData(weatherData: WeatherData) -> dict:
     }] + getWeatherData()
     joinWeatherDir()
     writeJSON(weatherFile, data)
-    return {"message": "ok"}
+    return message.ok
 
 def deleteWeatherData() -> dict:
     joinWeatherDir()
     if os.path.isfile(weatherFile):
         os.remove(weatherFile)
-    return {"message", "ok"}
+    return message.ok
 
 def getEvents() -> list:
     joinDataDir()
-    return []
+    return getJSONFile(eventsFile)
 
 def saveEvent(event: Event) -> dict:
     joinDataDir()
-    return {"message": "ok"}
+    data = getEvents() + [event.dict()]
+    writeJSON(eventsFile, data)
+    return message.ok
 
 def deleteEvent(event: Event) -> dict:
     joinDataDir()
-    return {"message": "ok"}
+    data = [item for item in getEvents() if item != event.dict()]
+    writeJSON(eventsFile, data)
+    return message.ok
