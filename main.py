@@ -21,25 +21,25 @@ def root():
     return {"message": "API online"}
 
 @app.get("/weather/data")
-def getWeatherData():
+def get_weather_data():
     return ResponseHelper.getWeatherData()
 
 @app.post("/weather/post")
-def saveWeatherData(data: WeatherData):
+def save_weather_data(data: WeatherData):
     return ResponseHelper.writeWeatherData(data)
 
 @app.delete("/weather/delete")
-def deleteWeatherData():
+def delete_weather_data():
     return ResponseHelper.deleteWeatherData()
 
 @app.get("/events")
-def getEvents():
+def get_events():
     return ResponseHelper.getEvents()
 
 @app.post("/events/post")
-def saveEvent(event: Event):
+def save_event(event: Event):
     return ResponseHelper.saveEvent(event)
 
 @app.delete("/events/delete")
-def deleteEvent(event: Event):
+def delete_event(event: Event):
     return ResponseHelper.deleteEvent(event)
