@@ -6,3 +6,7 @@ class WeatherData(BaseModel):
     dht_h: float
     bmp_t: float
     bmp_p: float
+
+class Event(BaseModel):
+    title: str
+    start: str

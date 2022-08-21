@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from models.weatherData import WeatherData
-import dependencies.ResponseHelper as ResponseHelper
+from models import WeatherData, Event
+import ResponseHelper as ResponseHelper
 import os
 import json
 
@@ -31,3 +31,15 @@ def saveWeatherData(data: WeatherData):
 @app.delete("/weather/delete")
 def deleteWeatherData():
     return ResponseHelper.deleteWeatherData()
+
+@app.get("/events")
+def getEvents():
+    return ResponseHelper.getEvents()
+
+@app.post("/events/post")
+def saveEvent(event: Event):
+    return ResponseHelper.saveEvent(event)
+
+@app.delete("/events/delete")
+def deleteEvent(event: Event):
+    return ResponseHelper.deleteEvent(event)
