@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from models import WeatherData, Event
-import ResponseHelper as ResponseHelper
+from utils.models import *
+import utils.ResponseHelper as ResponseHelper
 import os
 import json
 
@@ -20,26 +20,30 @@ app.add_middleware(
 def root():
     return {"message": "API online"}
 
-@app.get("/weather/data")
+@app.get("/weather/data", response_model=list[WeatherData])
 def get_weather_data():
     return ResponseHelper.getWeatherData()
 
-@app.post("/weather/post")
+@app.post("/weather/post", response_model=Message)
 def save_weather_data(data: WeatherData):
-    return ResponseHelper.writeWeatherData(data)
+    ResponseHelper.writeWeatherData(data)
+    return Message(message="ok")
 
-@app.delete("/weather/delete")
+@app.delete("/weather/delete", response_model=Message)
 def delete_weather_data():
-    return ResponseHelper.deleteWeatherData()
+    ResponseHelper.deleteWeatherData()
+    return Message(message="ok")
 
-@app.get("/events")
+@app.get("/events", response_model=list[Event])
 def get_events():
     return ResponseHelper.getEvents()
 
-@app.post("/events/post")
+@app.post("/events/post", response_model=Message)
 def save_event(event: Event):
-    return ResponseHelper.saveEvent(event)
+    ResponseHelper.saveEvent(event)
+    return Message(message="ok")
 
-@app.delete("/events/delete")
+@app.delete("/events/delete", response_model=Message)
 def delete_event(event: Event):
-    return ResponseHelper.deleteEvent(event.id)
+    ResponseHelper.deleteEvent(event.id)
+    return Message(message="ok")

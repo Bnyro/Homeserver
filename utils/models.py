@@ -12,3 +12,6 @@ class Event(BaseModel):
     title: str | None = None
     start: str | None = None
     color: str | None = None
+
+class Message(BaseModel):
+    message: str
