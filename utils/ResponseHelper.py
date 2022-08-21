@@ -32,11 +32,11 @@ def writeWeatherData(weatherData: WeatherData) -> None:
         "time": time.time(),
         "data": weatherData.dict()
     }] + getWeatherData()
-    joinWeatherDir()
+    joinDataDir()
     writeJSON(weatherFile, data)
 
 def deleteWeatherData() -> None:
-    joinWeatherDir()
+    joinDataDir()
     if os.path.isfile(weatherFile):
         os.remove(weatherFile)
 
