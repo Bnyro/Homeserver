@@ -42,4 +42,4 @@ def save_event(event: Event):
 
 @app.delete("/events/delete")
 def delete_event(event: Event):
-    return ResponseHelper.deleteEvent(event)
+    return ResponseHelper.deleteEvent(event.id)

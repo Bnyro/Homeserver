@@ -9,6 +9,6 @@ class WeatherData(BaseModel):
 
 class Event(BaseModel):
     id: float
-    title: str
-    start: str
-    color: str
+    title: str | None = None
+    start: str | None = None
+    color: str | None = None
