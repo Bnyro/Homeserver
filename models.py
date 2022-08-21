@@ -10,3 +10,4 @@ class WeatherData(BaseModel):
 class Event(BaseModel):
     title: str
     start: str
+    color: str
