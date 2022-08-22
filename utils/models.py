@@ -7,6 +7,10 @@ class WeatherData(BaseModel):
     bmp_t: float
     bmp_p: float
 
+class WeatherItem(BaseModel):
+    time: float
+    data: WeatherData
+
 class Event(BaseModel):
     id: float
     title: str | None = None

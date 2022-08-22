@@ -20,7 +20,7 @@ app.add_middleware(
 def root():
     return {"message": "API online"}
 
-@app.get("/weather/data", response_model=list[WeatherData])
+@app.get("/weather/data", response_model=list[WeatherItem])
 def get_weather_data():
     return ResponseHelper.getWeatherData()
 
