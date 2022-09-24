@@ -15,6 +15,7 @@ class Event(BaseModel):
     id: float
     title: str | None = None
     start: str | None = None
+    end: str | None = None
     color: str | None = None
 
 class Message(BaseModel):
