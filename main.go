@@ -7,12 +7,16 @@ import (
 	"github.com/SimpleAPI/entities"
 	"github.com/SimpleAPI/handlers"
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 )
 
 func main() {
 	config.Connect()
 
 	e := echo.New()
+
+	e.Use(middleware.CORS())
+
 	e.GET("/", func(c echo.Context) error {
 		return c.JSON(http.StatusOK, entities.Message{
 			Message: "API online",
